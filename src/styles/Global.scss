@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@600&display=swap');
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+// global rules 
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    font-family: 'Tomorrow', sans-serif;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+}
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    }
+}
+
+button {
+    border: none;
+    outline: none;
+    font-family: 'Tomorrow', sans-serif;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+// vars
+:root {
+    --normal-FS:12px;
+    --normal-FW:600;
+
+    --number-FS:16px;
+    --number-FW:600;
+}
+@media only screen and (max-width: 1440px) {
+    :root {
+        --normal-FS:12px;
+        --number-FS:16px;
+    }
+}
+@media only screen and (max-width: 900px) {
+    :root {
+        --normal-FS:10px;
+        --number-FS:14px;
+    }
+}
+@media only screen and (max-width: 480px) {
+    :root {
+        --normal-FS:10px;
+        --number-FS:14px;
+    }
+}
+
+// utility classes
+.TXT-normal {
+    font-size: var(--normal-FS);
+    font-weight: var(--normal-FW);
+    color: #737BAE;
+}
+
+.TXT-number {
+    font-size: var(--number-FS);
+    font-weight: var(--number-FW);
+    color: #ECF0FF;
+}
+
+// start card holders
+.cards-holder {
+    padding: 50px;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #14172B;
+    flex-wrap: wrap;
+    gap: 80px 20px;
+    .card {
+        position: relative;
+        width:290px;
+        height:350px;
+        background-image: linear-gradient(rgba(98,106,136,0.1), rgba(46,49,73,0.1) );
+        border-radius: 15px;
+        border: 1px solid rgb(255, 255, 255, 0.2);
+        &::after {
+            content: '';
+            background-color: #14172B;
+            position: absolute;
+            width: 120px;
+            height: 4px;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        .image-holder {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%,-50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 10px solid #14172B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                width: 70px;
+                height: 70px;
+                background-color: transparent;
+                left: -62px;
+                top: 53%;
+                transform: rotate(5deg);
+                border-top-right-radius: 60px 42px;
+                box-shadow: 0px -12px #14172B;
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                width: 70px;
+                height: 70px;
+                background-color: transparent;
+                right: -62px;
+                top: 53%;
+                transform: rotate(-5deg);
+                border-top-left-radius: 60px 42px;
+                box-shadow: 0px -12px #14172B;
+            }
+        }
+        .other-data {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 0 30px 0;
+            
+            .price-change,
+            .price {
+                width: 240px;
+                height: 40px;
+                border-radius: 17px;
+                background-color: #14172B;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                & :nth-child(2){
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+            .popular-pairs {
+                width: 120px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                background-color: #14172B;
+                border-radius: 30px;
+                img {
+                    width: 22px;
+                    height: 22px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
